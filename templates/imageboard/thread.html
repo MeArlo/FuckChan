@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>/{{ board.abbreviation }}/ - {{ thread.subject|default:"Без темы" }}</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            max-width: 800px; 
+            margin: 0 auto; 
+            padding: 20px; 
+            background-color: #eef2ff;
+            font-size: 14px;
+        }
+        .post { 
+            border: 1px solid #b7c5d9; 
+            margin-bottom: 10px; 
+            padding: 10px; 
+            background-color: white;
+            border-radius: 4px;
+        }
+        .post-header { 
+            font-size: 0.9em; 
+            color: #34345c; 
+            margin-bottom: 10px; 
+            font-weight: bold;
+        }
+        .post-image-container {
+            float: left;
+            margin-right: 15px;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+        .post-image { 
+            max-width: 150px; 
+            max-height: 150px; 
+            display: block;
+            cursor: pointer;
+            border: 1px solid #ddd;
+            transition: max-width 0.2s, max-height 0.2s;
+        }
+        .post-image.expanded {
+            max-width: 400px;
+            max-height: 400px;
+        }
+        .op-post { 
+            background-color: #d6daf0; 
+        }
+        .reply-form { 
+            margin-top: 20px; 
+            clear: both;
+            background-color: #d6daf0;
+            padding: 15px;
+            border-radius: 4px;
+        }
+        .post-message {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            line-height: 1.4;
+        }
+        .post-info {
+            color: #789922;
+            font-size: 0.85em;
+            margin-top: 5px;
+        }
+        .back-link {
+            margin-top: 20px;
+        }
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+        .message-image-preview {
+            border: 1px solid #b7c5d9;
+            background: white;
+            padding: 3px;
+            z-index: 1000;
+            pointer-events: none;
+            box-shadow: 0 0 5px rgba(0,0,0,0.3);
+        }
+        .thread-title {
+            color: #0f0c5d;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        form input[type="text"],
+        form textarea {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #b7c5d9;
+            border-radius: 3px;
+        }
+        form textarea {
+            height: 100px;
+        }
+        button[type="submit"] {
+            background-color: #34345c;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        button[type="submit"]:hover {
+            background-color: #454573;
+        }
+        .file-info {
+            font-size: 0.8em;
+            color: #666;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="thread-title">
+        /{{ board.abbreviation }}/ - {{ thread.subject|default:"Без темы" }}
+    </div>
+    
+    <div class="posts">
+        {% for post in posts %}
+        <div class="post {% if post.is_op %}op-post{% endif %} clearfix" id="post-{{ post.id }}">
+            <div class="post-header">
+                <span class="post-author">{{ post.author|default:"Аноним" }}</span>
+                <span class="post-date">{{ post.created_at|date:"d/m/y H:i:s" }}</span>
+                <span class="post-id">№{{ post.id }}</span>
+                {% if post.subject %}<span class="post-subject">{{ post.subject }}</span>{% endif %}
+            </div>
+            
+            {% if post.image %}
+            <div class="post-image-container">
+                <a href="{{ post.image.url }}" target="_blank">
+                    <img class="post-image" src="{{ post.image.url }}" alt="Image" 
+                         data-fullsize="{{ post.image.url }}">
+                </a>
+                <div class="post-info">
+                    Файл: <a href="{{ post.image.url }}" target="_blank">{{ post.image.name|slice:"6:"|truncatechars:20 }}</a><br>
+                    ({{ post.image.width }}x{{ post.image.height }}, 
+                    {{ post.image.size|filesizeformat }})
+                </div>
+            </div>
+            {% endif %}
+            
+            <div class="post-message">
+                {{ post.message|linebreaks }}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <div class="reply-form">
+        <h3>Ответить</h3>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <div>
+                <label for="id_author">Имя:</label>
+                {{ form.author }}
+            </div>
+            
+            <div>
+                <label for="id_subject">Тема:</label>
+                {{ form.subject }}
+            </div>
+            
+            <div>
+                <label for="id_message">Сообщение:</label>
+                {{ form.message }}
+            </div>
+            
+            <div>
+                <label for="id_image">Изображение:</label>
+                {{ form.image }}
+                <div class="file-info">
+                    Максимальный размер: 5MB. Разрешены: JPG, PNG, GIF
+                </div>
+            </div>
+            
+            <button type="submit">Отправить</button>
+        </form>
+    </div>
+    
+    <div class="back-link">
+        <a href="{% url 'thread_list' board_abbr=board.abbreviation %}">Вернуться к списку тредов</a>
+    </div>
+
+    <script>
+        // Увеличение изображений при клике
+        document.querySelectorAll('.post-image').forEach(img => {
+            img.addEventListener('click', function(e) {
+                e.preventDefault();
+                this.classList.toggle('expanded');
+            });
+        });
+        
+        // Показываем превью ссылок на изображения
+        document.querySelectorAll('.post-message a').forEach(a => {
+            if (a.href.match(/\.(jpg|jpeg|png|gif)$/i)) {
+                const img = document.createElement('img');
+                img.src = a.href;
+                img.style.maxWidth = '150px';
+                img.style.maxHeight = '150px';
+                img.style.display = 'none';
+                img.classList.add('message-image-preview');
+                
+                a.addEventListener('mouseenter', () => {
+                    img.style.display = 'block';
+                    img.style.position = 'absolute';
+                    document.body.appendChild(img);
+                    
+                    const updatePosition = (e) => {
+                        img.style.left = (e.clientX + 15) + 'px';
+                        img.style.top = (e.clientY + 15) + 'px';
+                    };
+                    
+                    a.addEventListener('mousemove', updatePosition);
+                    a.addEventListener('mouseleave', () => {
+                        img.style.display = 'none';
+                        document.body.removeChild(img);
+                        a.removeEventListener('mousemove', updatePosition);
+                    });
+                });
+            }
+        });
+
+        // Открытие изображений в новой вкладке по Ctrl+Click
+        document.querySelectorAll('.post-image').forEach(img => {
+            img.addEventListener('click', function(e) {
+                if (e.ctrlKey || e.metaKey) {
+                    window.open(this.parentElement.href, '_blank');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
