@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>/{{ board.abbreviation }}/ - {{ board.name }}</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 1000px; margin: 0 auto; padding: 20px; }
+        .thread { border: 1px solid #ccc; margin-bottom: 20px; padding: 10px; }
+        .thread-info { font-size: 0.9em; color: #666; }
+        .thread-subject { font-weight: bold; }
+        .create-thread { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>/{{ board.abbreviation }}/ - {{ board.name }}</h1>
+    <p>{{ board.description }}</p>
+    
+    <div class="threads">
+        {% for thread in threads %}
+        <div class="thread {% if thread.is_pinned %}pinned{% endif %}">
+            <div class="thread-info">
+                {% if thread.is_pinned %}[Закреплено]{% endif %}
+                {% if thread.is_locked %}[Закрыто]{% endif %}
+            </div>
+            <div class="thread-subject">
+                <a href="{% url 'thread' board_abbr=board.abbreviation thread_id=thread.id %}">
+                    {{ thread.subject|default:"Без темы" }}
+                </a>
+            </div>
+            <div class="thread-posts-count">
+                Ответов: {{ thread.post_set.count }}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <div class="create-thread">
+        <a href="{% url 'create_thread' board_abbr=board.abbreviation %}">Создать тред</a>
+    </div>
+</body>
+</html><!DOCTYPE html>
+<html>
+<head>
+    <title>/{{ board.abbreviation }}/ - {{ thread.subject|default:"Без темы" }}</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .post { border: 1px solid #ccc; margin-bottom: 10px; padding: 10px; }
+        .post-header { font-size: 0.9em; color: #666; margin-bottom: 10px; }
+        .post-image { max-width: 200px; max-height: 200px; }
+        .op-post { background-color: #f0f0f0; }
+        .reply-form { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>/{{ board.abbreviation }}/ - {{ thread.subject|default:"Без темы" }}</h1>
+    
+    <div class="posts">
+        {% for post in posts %}
+        <div class="post {% if post.is_op %}op-post{% endif %}" id="post-{{ post.id }}">
+            <div class="post-header">
+                <span class="post-author">{{ post.author }}</span>
+                <span class="post-date">{{ post.created_at }}</span>
+                <span class="post-id">№{{ post.id }}</span>
+            </div>
+            {% if post.image %}
+            <div class="post-image">
+                <img src="{{ post.image.url }}" alt="Image">
+            </div>
+            {% endif %}
+            <div class="post-message">
+                {{ post.message|linebreaks }}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <div class="reply-form">
+        <h3>Ответить</h3>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Отправить</button>
+        </form>
+    </div>
+    
+    <div class="back-link">
+        <a href="{% url 'thread_list' board_abbr=board.abbreviation %}">Вернуться к списку тредов</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>4chan Clone</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .board-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
+        .board { border: 1px solid #ccc; padding: 10px; border-radius: 5px; }
+        .board h3 { margin-top: 0; }
+    </style>
+</head>
+<body>
+    <h1>4chan Clone</h1>
+    <div class="board-list">
+        {% for board in boards %}
+        <div class="board">
+            <h3><a href="{% url 'thread_list' board_abbr=board.abbreviation %}">/{{ board.abbreviation }}/</a></h3>
+            <p>{{ board.name }}</p>
+            <p>{{ board.description }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
