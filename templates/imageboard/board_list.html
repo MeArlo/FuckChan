@@ -18,6 +18,11 @@
             <p>{{ board.name }}</p>
             <p>{{ board.description }}</p>
         </div>
+            <div class="board">
+            <h3><a href="{% url 'thread_list' board_abbr=board.abbreviation %}">/{{ board.abbreviation }}/</a></h3>
+            <p>{{ board.name }}</p>
+            <p>{{ board.description }}</p>
+        </div>
         {% endfor %}
     </div>
 </body>
