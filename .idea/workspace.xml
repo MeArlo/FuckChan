@@ -4,17 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45e3b65b-cb49-40b6-a2ac-bb13e7160fb1" name="Changes" comment="1">
-      <change afterPath="$PROJECT_DIR$/FuckChan/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FuckChan/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FuckChan/serializers.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/account/signup.html" afterDir="false" />
+    <list default="true" id="45e3b65b-cb49-40b6-a2ac-bb13e7160fb1" name="Changes" comment="test">
+      <change beforePath="$PROJECT_DIR$/.idea/FuckChan.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/FuckChan.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FuckChan/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FuckChan/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FuckChan/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/imageboard/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FuckChan/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/FuckChan/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FuckChan/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/FuckChan/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imageboard/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/imageboard/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imageboard/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/imageboard/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imageboard/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imageboard/migrations/templates/imageboard/board_list.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imageboard/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/imageboard/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imageboard/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/imageboard/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imageboard/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/imageboard/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,21 +30,20 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="PREVIEW_PUSH_PROTECTED_ONLY" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;MeArlo&quot;
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Fox1ris"
   }
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/MeArlo/FuckChan&quot;,
-    &quot;accountId&quot;: &quot;5c08f6be-e2e2-46cb-9fc0-cc104e0e8c08&quot;
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/MeArlo/FuckChan.git",
+    "accountId": "30b0e091-2ee2-4422-a332-0ed41c1a2008"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -46,23 +53,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Django Server.FuckChan.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;django.template.preview.state&quot;: &quot;SHOW_EDITOR_AND_PREVIEW&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Django Server.FuckChan.executor": "Run",
+    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "django.template.preview.state": "SHOW_EDITOR_AND_PREVIEW",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\exiolite\PycharmProjects\FuckChan\imageboard" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="FuckChan" type="Python.DjangoServer" factoryName="Django server">
       <module name="FuckChan" />
@@ -93,8 +107,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-PY-242.21829.153" />
-        <option value="bundled-python-sdk-464836ebc622-b74155a9e76b-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-242.21829.153" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-PY-243.26053.29" />
+        <option value="bundled-python-sdk-b1dbf8ef85a6-4df51de95216-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-243.26053.29" />
       </set>
     </attachedChunks>
   </component>
@@ -106,71 +120,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1744654127385</updated>
-      <workItem from="1744654128717" duration="4303000" />
-      <workItem from="1745258850341" duration="1093000" />
-      <workItem from="1745260524740" duration="18000" />
-      <workItem from="1745681687590" duration="660000" />
-      <workItem from="1745682369094" duration="60000" />
-      <workItem from="1745688171952" duration="1055000" />
-      <workItem from="1745698185145" duration="526000" />
-      <workItem from="1745698911137" duration="89000" />
-      <workItem from="1745775835630" duration="1674000" />
+      <workItem from="1744654128717" duration="3438000" />
+      <workItem from="1745863667214" duration="78000" />
     </task>
-    <task id="LOCAL-00001" summary="1">
-      <option name="closed" value="true" />
-      <created>1744657819836</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1744657819836</updated>
-    </task>
-    <task id="LOCAL-00002" summary="1">
-      <option name="closed" value="true" />
-      <created>1744657913987</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1744657913988</updated>
-    </task>
-    <task id="LOCAL-00003" summary="1">
-      <option name="closed" value="true" />
-      <created>1744658303449</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1744658303449</updated>
-    </task>
-    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="master" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="1" />
-    <option name="LAST_COMMIT_MESSAGE" value="1" />
   </component>
 </project>

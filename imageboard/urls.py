@@ -1,9 +1,14 @@
-from django.urls import path
-from .views import BoardListView, ThreadListView, ThreadView, CreateThreadView
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+
+from imageboard.views import CommentListView, PostListView, UserListView
+
+
+router = DefaultRouter()
+router.register(r'users', UserListView)
+router.register(r'posts', PostListView, basename='task')
+router.register(r'comments', CommentListView, basename='comment')
 
 urlpatterns = [
-    path('', BoardListView.as_view(), name='board_list'),
-    path('<str:board_abbr>/', ThreadListView.as_view(), name='thread_list'),
-    path('<str:board_abbr>/thread/<int:thread_id>/', ThreadView.as_view(), name='thread'),
-    path('<str:board_abbr>/new/', CreateThreadView.as_view(), name='create_thread'),
-]
+    path('', include(router.urls)),
+    ]
