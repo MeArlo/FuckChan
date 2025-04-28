@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="auth-container">
+    <h2>Регистрация</h2>
+    
+    <div class="social-auth">
+        <a href="{% provider_login_url 'vk' %}" class="vk-auth">
+            Зарегистрироваться через ВКонтакте
+        </a>
+        <a href="{% provider_login_url 'telegram' %}" class="telegram-auth">
+            Зарегистрироваться через Telegram
+        </a>
+    </div>
+    
+    <div class="or-divider">или</div>
+    
+    <form class="signup" method="POST" action="{% url 'account_signup' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Зарегистрироваться</button>
+    </form>
+    
+    <div class="auth-links">
+        Уже есть аккаунт? <a href="{% url 'account_login' %}">Войти</a>
+    </div>
+</div>
+{% endblock %}
